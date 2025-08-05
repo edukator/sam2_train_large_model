@@ -34,14 +34,23 @@ To get started with the training code, we provide a simple example to fine-tune 
         gt_folder: null # PATH to MOSE Annotations folder
         file_list_txt: null # Optional PATH to filelist containing a subset of videos to be used for training
     ```
-- To fine-tune the base model on MOSE using 8 GPUs, run 
+- To fine-tune the base model on MOSE using 8 GPUs, run
 
     ```python
-    python training/train.py \
-        -c configs/sam2.1_training/sam2.1_hiera_b+_MOSE_finetune.yaml \
-        --use-cluster 0 \
-        --num-gpus 8
-    ```
+      python training/train.py \
+          -c configs/sam2.1_training/sam2.1_hiera_b+_MOSE_finetune.yaml \
+          --use-cluster 0 \
+          --num-gpus 8
+      ```
+
+- To fine-tune the large model on a single GPU, run
+
+      ```python
+      python training/train.py \
+          -c configs/train_large.yaml \
+          --use-cluster 0 \
+          --num-gpus 1
+      ```
 
     We also support multi-node training on a cluster using [SLURM](https://slurm.schedmd.com/documentation.html), for example, you can train on 2 nodes by running
 
